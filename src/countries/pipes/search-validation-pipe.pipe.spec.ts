@@ -1,4 +1,3 @@
-import { SearchValidationPipePipe } from './search-validation-pipe.pipe';
 import {
   ArgumentMetadata,
   BadRequestException,
@@ -6,12 +5,14 @@ import {
   HttpStatus,
 } from '@nestjs/common';
 
+import { SearchValidationPipePipe } from './search-validation-pipe.pipe';
+
 describe('SearchValidationPipePipe', () => {
   let searchValidationPipePipe: SearchValidationPipePipe;
-  const minlength = 3;
+  const MIN_LENGTH = 3;
 
   beforeAll(() => {
-    searchValidationPipePipe = new SearchValidationPipePipe(minlength);
+    searchValidationPipePipe = new SearchValidationPipePipe(MIN_LENGTH);
   });
 
   it('Should be defined', () => {
@@ -68,7 +69,7 @@ describe('SearchValidationPipePipe', () => {
     // Then
     expect(invalidValueLengthCallback).toThrow(
       new HttpException(
-        `Validation failed: "search" must be at least ${minlength} characters long.`,
+        `Validation failed: "search" must be at least ${MIN_LENGTH} characters long.`,
         HttpStatus.NO_CONTENT,
       ),
     );

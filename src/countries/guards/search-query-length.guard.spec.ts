@@ -1,7 +1,8 @@
-import { ExecutionContext } from '@nestjs/common';
-import { SearchQueryLengthGuard } from './search-query-length.guard';
-import { NoContentException } from '../helpers/no-content-exception';
 import { BadRequestException } from '@nestjs/common';
+import { ExecutionContext } from '@nestjs/common';
+
+import { NoContentException } from '../helpers/no-content-exception';
+import { SearchQueryLengthGuard } from './search-query-length.guard';
 
 describe('SearchQueryLengthGuard', () => {
   const MIN_LENGTH = 3;

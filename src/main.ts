@@ -5,7 +5,16 @@ import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  const config = new DocumentBuilder()
+    .setTitle('Countries')
+    .setDescription('The Countries API description')
+    .setVersion('0.1')
+    .build();
+  const document = SwaggerModule.createDocument(app, config);
 
+  SwaggerModule.setup('api', app, document);
+
+  app.enableCors();
   app.useGlobalPipes(
     new ValidationPipe({
       forbidNonWhitelisted: true,
@@ -16,17 +25,6 @@ async function bootstrap() {
       whitelist: true,
     }),
   );
-
-  const config = new DocumentBuilder()
-    .setTitle('Countries')
-    .setDescription('The Countries API description')
-    .setVersion('0.1')
-    .build();
-
-  const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, document);
-
-  app.enableCors();
   await app.listen(3000);
 }
 bootstrap();

@@ -1,4 +1,6 @@
-export const populate = (countries: any[], totalPopulation: number) => {
+import { Country } from 'src/types/country/country.interface';
+
+export const populate = (countries: Country[], totalPopulation: number) => {
   return countries.map((country) => {
     return {
       ...country,

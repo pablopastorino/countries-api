@@ -1,16 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from '../services/prisma/prisma.service';
-import { PaginationQueryDto } from './dto/pagination-query-dto';
+
 import { CountryQueryDto } from './dto/country-query-dto';
 import { countryQueryFactory } from './helpers/countryQueryFactory';
 import { populate } from './helpers/populate';
-
-export interface ICountry {
-  id: number;
-  country: string;
-  population: number;
-  percentage?: number;
-}
+import { PrismaService } from '../services/prisma/prisma.service';
 
 @Injectable()
 export class CountriesService {
